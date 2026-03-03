@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# build / coverage
+/build
+/coverage
+*.tsbuildinfo
+
+# env files
+.env
+.env*.local
+
+# logs
+npm-debug.log*
+
+# misc
+.DS_Store
+.vscode/
+.idea/

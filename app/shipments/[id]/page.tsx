@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CancelShipmentDialog } from "@/components/cancel-shipment-dialog";
 import { StatusBadge } from "@/components/status-badge";
 import { TrackingTimeline } from "@/components/tracking-timeline";
 import {
@@ -12,7 +13,7 @@ import {
   formatWeight,
 } from "@/lib/format";
 import type { Stop } from "@/lib/schemas";
-import { requireCarrierSession } from "@/lib/session";
+import { canBook, requireCarrierSession } from "@/lib/session";
 import { getShipment, getTracking, ShipmentApiError } from "@/lib/shipment-api";
 
 type Props = { params: Promise<{ id: string }> };
@@ -20,6 +21,8 @@ type Props = { params: Promise<{ id: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `Shipment ${(await params).id}` };
 }
+
+const CANCELLABLE = new Set(["tendered", "booked"]);
 
 export default async function ShipmentDetailPage({ params }: Props) {
   const { id } = await params;
@@ -52,6 +55,9 @@ export default async function ShipmentDetailPage({ params }: Props) {
           <Link href={`/tracking/${shipment.pro_number}`} className="btn-secondary">
             Public tracking link
           </Link>
+          {canBook(session) && CANCELLABLE.has(shipment.status) && (
+            <CancelShipmentDialog shipmentId={shipment.id} proNumber={shipment.pro_number} />
+          )}
         </div>
       </div>
 

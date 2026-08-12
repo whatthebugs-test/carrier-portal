@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CancelShipmentDialog } from "@/components/cancel-shipment-dialog";
+import { DocumentUpload } from "@/components/document-upload";
 import { StatusBadge } from "@/components/status-badge";
 import { TrackingTimeline } from "@/components/tracking-timeline";
 import {
@@ -91,6 +92,13 @@ export default async function ShipmentDetailPage({ params }: Props) {
         </section>
       </div>
 
+      {session.role !== "viewer" && (
+        <section className="card p-5">
+          <h2 className="mb-1 text-sm font-semibold text-slate-700">Documents</h2>
+          <p className="mb-4 text-sm text-ink-muted">Upload signed BOLs and PODs to release payment.</p>
+          <DocumentUpload shipmentId={shipment.id} />
+        </section>
+      )}
     </div>
   );
 }

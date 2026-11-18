@@ -123,7 +123,7 @@ describe("shipment-api client", () => {
       file,
       filename: "POD 4820019375.pdf",
       kind: "pod",
-      uploadedBy: "dispatch@midsouthtransport.com",
+      uploadedBy: "dispatch@kestrelfreight.io",
     });
 
     const [url, init] = fetchMock.mock.calls[0]!;

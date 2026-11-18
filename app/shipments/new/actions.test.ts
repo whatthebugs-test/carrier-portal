@@ -27,7 +27,7 @@ const { ShipmentApiError } = await import("@/lib/shipment-api");
 const dispatcher: CarrierSession = {
   userId: "usr_41",
   name: "Luis Ortega",
-  email: "dispatch@midsouthtransport.com",
+  email: "dispatch@kestrelfreight.io",
   carrierId: "car_mdt",
   carrierName: "Mid-South Transport",
   scac: "MDTX",

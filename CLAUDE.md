@@ -29,3 +29,6 @@ See README.md for architecture and env vars.
 - Branch from `main` as `fix/<topic>` (or `feat/<topic>`, `chore/<topic>`).
 - Open PRs with `gh pr create`. Fill in what changed and how you verified it.
 - Security fixes put the CVE in the PR title, e.g. `fix: bump next to 15.x.y (CVE-2025-XXXXX)`.
+- Keep incident details (IPs, hostnames, leaked values, timelines) out of commits and PR descriptions; this repo
+  is shared with partner integrators. They go in the incident channel. The PR says what was vulnerable and how
+  the fix was verified.

@@ -23,6 +23,8 @@ See README.md for architecture and env vars.
 - Versions in `package.json` are pinned exactly. Change one with `npm install --save-exact <pkg>@<version>`
   so `package.json` and `package-lock.json` move together, and commit both. CI uses `npm ci` and fails if they drift.
 - `next` and `eslint-config-next` move together, same version.
+- For security upgrades, take the target version from whatthebugs (`plan_upgrades`): it picks the release that
+  clears every known issue on the package, not just the one you're fixing.
 
 ## Git and PRs
 
